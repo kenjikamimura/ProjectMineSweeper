@@ -10,36 +10,28 @@ class Board extends React.Component {
     );
   }
 
-  render() {
-    return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0, 0)}
-          {this.renderSquare(0, 1)}
-          {this.renderSquare(0, 2)}
-          {this.renderSquare(0, 3)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(1, 0)}
-          {this.renderSquare(1, 1)}
-          {this.renderSquare(1, 2)}
-          {this.renderSquare(1, 3)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(2, 0)}
-          {this.renderSquare(2, 1)}
-          {this.renderSquare(2, 2)}
-          {this.renderSquare(2, 3)}
-        </div>
+  createBoard = () => {
+    const matrixSize = this.props.squares.length;
+    let board = [];
+    for (let i = 0; i < matrixSize; i++) {
+      let boardRow = [];
+      boardRow.push(<div className="board-row" />);
+      for (let j = 0; j < matrixSize; j++) {
+        boardRow.push(
+          <Square
+            key={i + " " + j}
+            isBlack={this.props.squares[i][j]}
+            onClick={() => this.props.onClick(i, j)}
+          />
+        );
+      }
+      board.push(boardRow);
+    }
+    return board;
+  };
 
-        <div className="board-row">
-          {this.renderSquare(3, 0)}
-          {this.renderSquare(3, 1)}
-          {this.renderSquare(3, 2)}
-          {this.renderSquare(3, 3)}
-        </div>
-      </div>
-    );
+  render() {
+    return <div>{this.createBoard()}</div>;
   }
 }
 
