@@ -9,7 +9,9 @@ class Square extends Component {
   render() {
     return (
       <button
-        className={this.props.isBlack ? "blackSquare" : "whiteSquare"}
+        className={
+          this.props.isBlack ? "square blackSquare" : "square whiteSquare"
+        }
         onClick={this.handleClick}
         ref={buttonDOM => {
           this.buttonDOM = buttonDOM;

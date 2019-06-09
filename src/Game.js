@@ -33,6 +33,12 @@ class Game extends Component {
     });
   };
 
+  showAnswer = () => {
+    this.setState({
+      squares: answerArray
+    });
+  };
+
   render() {
     console.log("state", this.state);
 
@@ -76,6 +82,14 @@ class Game extends Component {
                         />
                       </div>
                     </div>
+                  </div>
+                  <div className="vertical-align">
+                    <button
+                      className=" btn teal darken-3"
+                      onClick={this.showAnswer}
+                    >
+                      Show Answer
+                    </button>
                   </div>
                 </div>
               </div>
