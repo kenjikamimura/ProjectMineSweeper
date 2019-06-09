@@ -56,7 +56,7 @@ class Game extends Component {
                           HAPPY BIRTHDAY KIMBERLEY!!!
                         </span>
                         <p>
-                          I know how much you love playing Mind Sweeper so here
+                          I know how much you love playing Mine Sweeper so here
                           is a little game for you to play to get to your
                           present!
                         </p>
