@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Board from "./Board";
+import "./index.css";
 
 import answerArray, { blankArray } from "./constants/answerArray";
 
@@ -73,10 +74,11 @@ class Game extends Component {
                     </div>
                   </div>
 
-                  <div className="card blue-grey darken-1 ">
+                  <div className="card blue-grey darken-1">
                     <div className="card-content white-text ">
                       <div className="">
                         <Board
+                          className=""
                           squares={this.state.squares}
                           onClick={(i, j) => this.handleClick(i, j)}
                         />
