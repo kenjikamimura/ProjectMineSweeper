@@ -12,6 +12,7 @@ const createBoard = props => {
         <Square
           key={row + " " + column}
           isBlack={props.squares[row][column]}
+          hintNumbersHidden={props.hintNumbersHidden}
           onClick={() => props.onClick(row, column)}
         />
       );

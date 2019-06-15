@@ -23,33 +23,39 @@ code {
 
 .square {
   float: center;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 19px;
+  font-size: 75%;
+
+  line-height: 10px;
   margin-right: -1px;
   /* margin-top: -10px; */
   /* margin-bottom: 0px; */
   padding: 0;
   text-align: center;
-  /* height: 19px;
-  width: 19px; */
+  height: 19px;
+  width: 19px;
   /* height: 19px; */
   width: 3%;
-}
-
-.square:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
 }
 
 .whiteSquare {
   background: #fff;
   border: 1px solid #999;
 }
+/* .whiteSquare:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+} */
 .blackSquare {
   background: #000000;
   border: 1px solid #000000;
+}
+
+.blackText {
+  color: black;
+}
+.whiteText {
+  color: white;
 }
 
 button:focus {

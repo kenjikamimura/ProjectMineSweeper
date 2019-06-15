@@ -10,22 +10,19 @@ class Game extends Component {
     super(props);
     this.state = {
       squares: JSON.parse(JSON.stringify(blankArray)),
-      bannerHidden: false
+      bannerHidden: false,
+      hintNumbersHidden: false
     };
   }
 
   handleClick(row, column) {
     let squares = this.state.squares;
     if (answerArray[row][column] === true) {
-      squares[row][column] = true;
-      const numberOfCorrectSurroundingSquares = this.findNumberOfCorrectSurroundingSquares(
+      squares[row][column] = this.findNumberOfCorrectSurroundingSquares(
         row,
         column
       );
-      console.log(
-        "correctSurroundingSquares",
-        numberOfCorrectSurroundingSquares
-      );
+      console.log("correctSurroundingSquares", squares[row][column]);
     } else {
       squares = JSON.parse(JSON.stringify(blankArray));
       console.log("blankarray:", blankArray);
@@ -81,6 +78,12 @@ class Game extends Component {
     });
   };
 
+  toggleNumbers = () => {
+    this.setState({
+      hintNumbersHidden: !this.state.hintNumbersHidden
+    });
+  };
+
   render() {
     console.log("state", this.state);
 
@@ -100,6 +103,7 @@ class Game extends Component {
                       <Board
                         className=""
                         squares={this.state.squares}
+                        hintNumbersHidden={this.state.hintNumbersHidden}
                         onClick={(i, j) => this.handleClick(i, j)}
                       />
                     </div>
@@ -111,6 +115,12 @@ class Game extends Component {
                     onClick={this.showAnswer}
                   >
                     Show Answer
+                  </button>
+                  <button
+                    className=" btn teal darken-3"
+                    onClick={this.toggleNumbers}
+                  >
+                    Toggle Numbers
                   </button>
                 </div>
               </div>
