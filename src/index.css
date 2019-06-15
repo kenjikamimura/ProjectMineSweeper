@@ -18,7 +18,7 @@ code {
   display: block;
   /* margin-top: -10px; */
   /* margin-top: -0.8%; */
-  margin-top: -0.7vh;
+  margin-top: -0.6vh;
 }
 
 .square {
@@ -34,7 +34,7 @@ code {
   height: 19px;
   width: 19px;
   /* height: 19px; */
-  width: 3%;
+  /* width: 3%; */
 }
 
 .whiteSquare {
@@ -64,6 +64,14 @@ button:focus {
 }
 
 .boardCard {
-  background: #fff;
-  height: 2cm;
+  width: 700px;
+  height: 700px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
 }
