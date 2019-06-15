@@ -14,10 +14,18 @@ class Game extends Component {
     };
   }
 
-  handleClick(i, j) {
+  handleClick(row, column) {
     let squares = this.state.squares;
-    if (answerArray[i][j] === true) {
-      squares[i][j] = true;
+    if (answerArray[row][column] === true) {
+      squares[row][column] = true;
+      const numberOfCorrectSurroundingSquares = this.findNumberOfCorrectSurroundingSquares(
+        row,
+        column
+      );
+      console.log(
+        "correctSurroundingSquares",
+        numberOfCorrectSurroundingSquares
+      );
     } else {
       squares = JSON.parse(JSON.stringify(blankArray));
       console.log("blankarray:", blankArray);
@@ -26,8 +34,40 @@ class Game extends Component {
 
     this.setState({ squares });
 
-    console.log(i, j);
+    console.log(row, column);
   }
+
+  getValueFromBlockOfInterest = (row, col) => {
+    try {
+      const blockOfInterest = !!answerArray[row][col];
+      // console.log("blockOfInterest", blockOfInterest);
+      return blockOfInterest;
+    } catch {
+      console.log("caught ya");
+      return false;
+    }
+  };
+
+  findNumberOfCorrectSurroundingSquares = (row, col) => {
+    let numberOfCorrectSurroundingSquares = 0;
+    if (this.getValueFromBlockOfInterest(row - 1, col - 1))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row - 1, col))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row - 1, col + 1))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row, col - 1))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row, col + 1))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row + 1, col - 1))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row + 1, col))
+      numberOfCorrectSurroundingSquares++;
+    if (this.getValueFromBlockOfInterest(row + 1, col + 1))
+      numberOfCorrectSurroundingSquares++;
+    return numberOfCorrectSurroundingSquares;
+  };
 
   hideBanner = () => {
     this.setState({
