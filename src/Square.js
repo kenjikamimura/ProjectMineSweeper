@@ -7,10 +7,13 @@ class Square extends Component {
     this.props.onClick();
   };
   render() {
+    // console.log("props.isBlack2", this.props.isBlack);
     return (
       <button
         className={
-          (this.props.isBlack ? "square blackSquare " : "square whiteSquare ") +
+          (this.props.isBlack === false
+            ? "square whiteSquare "
+            : "square blackSquare ") +
           (this.props.hintNumbersHidden ? "blackText " : "whiteText ")
         }
         onClick={this.handleClick}
@@ -18,11 +21,7 @@ class Square extends Component {
           this.buttonDOM = buttonDOM;
         }}
       >
-        {!!this.props.isBlack
-          ? this.props.isBlack === true
-            ? "."
-            : this.props.isBlack
-          : "\u2001"}
+        {this.props.isBlack === false ? "\u2001" : this.props.isBlack}
       </button>
     );
   }

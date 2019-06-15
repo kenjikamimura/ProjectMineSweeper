@@ -11,7 +11,9 @@ class Game extends Component {
     this.state = {
       squares: JSON.parse(JSON.stringify(blankArray)),
       bannerHidden: false,
-      hintNumbersHidden: false
+      hintNumbersHidden: false,
+      numberOfSaves: 5,
+      resetState: JSON.parse(JSON.stringify(blankArray))
     };
   }
 
@@ -22,9 +24,12 @@ class Game extends Component {
         row,
         column
       );
+      if (this.checkIfWon()) {
+        alert("You won!");
+      }
       console.log("correctSurroundingSquares", squares[row][column]);
     } else {
-      squares = JSON.parse(JSON.stringify(blankArray));
+      squares = JSON.parse(JSON.stringify(this.state.resetState));
       console.log("blankarray:", blankArray);
     }
     console.log("sqaures", squares);
@@ -33,6 +38,19 @@ class Game extends Component {
 
     console.log(row, column);
   }
+
+  checkIfWon = () => {
+    for (let i = 0; i < this.state.squares.length; i++) {
+      for (let j = 0; j < this.state.squares.length; j++) {
+        if (answerArray[i][j]) {
+          if (this.state.squares[i][j] === false) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  };
 
   getValueFromBlockOfInterest = (row, col) => {
     try {
@@ -84,44 +102,77 @@ class Game extends Component {
     });
   };
 
+  saveCheckpoint = () => {
+    if (this.state.numberOfSaves > 0) {
+      this.setState({
+        numberOfSaves: this.state.numberOfSaves - 1,
+        resetState: JSON.parse(JSON.stringify(this.state.squares))
+      });
+    }
+  };
+
+  reset = () => {
+    this.setState({
+      squares: JSON.parse(JSON.stringify(blankArray)),
+      hintNumbersHidden: false,
+      numberOfSaves: 5,
+      resetState: JSON.parse(JSON.stringify(blankArray))
+    });
+  };
+
   render() {
     console.log("state", this.state);
 
     return (
       <div className="game">
-        <div className="container grey lighten-2">
-          <div className="container ">
+        <div className=" grey lighten-2 center">
+          <div className=" ">
             <div className="row center">
               <div className="col s12 center">
-                <div className={this.state.bannerHidden ? "hide" : ""}>
+                {/* <div className={this.state.bannerHidden ? "hide" : ""}>
                   <TopBanner hideBanner={this.hideBanner} />
-                </div>
+                </div> */}
 
-                <div className="card blue-grey darken-1">
+                <div className="card blue-grey darken-1  boardCard ">
                   <div className="card-content white-text ">
                     <div className="">
                       <Board
-                        className=""
+                        className="boardCard"
                         squares={this.state.squares}
                         hintNumbersHidden={this.state.hintNumbersHidden}
                         onClick={(i, j) => this.handleClick(i, j)}
                       />
                     </div>
                   </div>
-                </div>
-                <div className="vertical-align">
-                  <button
-                    className=" btn teal darken-3"
-                    onClick={this.showAnswer}
-                  >
-                    Show Answer
-                  </button>
-                  <button
-                    className=" btn teal darken-3"
-                    onClick={this.toggleNumbers}
-                  >
-                    Toggle Numbers
-                  </button>
+                  <div className="vertical-align">
+                    <button
+                      className=" btn teal darken-3"
+                      onClick={this.showAnswer}
+                    >
+                      Show Answer
+                    </button>
+                    <button
+                      className=" btn teal darken-3"
+                      onClick={this.toggleNumbers}
+                    >
+                      Toggle Numbers
+                    </button>
+                    <button
+                      className=" btn teal darken-3"
+                      onClick={this.saveCheckpoint}
+                    >
+                      Save Checkpoint
+                    </button>
+                    <button
+                      className=" btn teal darken-3"
+                      onClick={this.saveCheckpoint}
+                    >
+                      Number Of Saves Left: {this.state.numberOfSaves}
+                    </button>
+                    <button className=" btn teal darken-3" onClick={this.reset}>
+                      Reset
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
