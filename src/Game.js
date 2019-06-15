@@ -3,6 +3,7 @@ import Board from "./Board";
 import "./index.css";
 
 import answerArray, { blankArray } from "./constants/answerArray";
+import TopBanner from "./TopBanner";
 
 class Game extends Component {
   constructor(props) {
@@ -51,27 +52,7 @@ class Game extends Component {
               <div className="row center">
                 <div className="col s12 center">
                   <div className={this.state.bannerHidden ? "hide" : ""}>
-                    <div className="card blue-grey darken-1">
-                      <div className="card-content white-text">
-                        <span className="card-title">
-                          HAPPY BIRTHDAY KIMBERLEY!!!
-                        </span>
-                        <p>
-                          I know how much you love playing Mine Sweeper so here
-                          is a little game for you to play to get to your
-                          present!
-                        </p>
-                      </div>
-                      <div className="card-action">
-                        <a
-                          className="white-text"
-                          href="#"
-                          onClick={this.hideBanner}
-                        >
-                          Got it!
-                        </a>
-                      </div>
-                    </div>
+                    <TopBanner hideBanner={this.hideBanner} />
                   </div>
 
                   <div className="card blue-grey darken-1">
