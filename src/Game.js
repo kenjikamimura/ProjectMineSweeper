@@ -46,34 +46,32 @@ class Game extends Component {
 
     return (
       <div className="game">
-        <div className="container">
-          <div className="grey lighten-2">
-            <div className="container ">
-              <div className="row center">
-                <div className="col s12 center">
-                  <div className={this.state.bannerHidden ? "hide" : ""}>
-                    <TopBanner hideBanner={this.hideBanner} />
-                  </div>
+        <div className="container grey lighten-2">
+          <div className="container ">
+            <div className="row center">
+              <div className="col s12 center">
+                <div className={this.state.bannerHidden ? "hide" : ""}>
+                  <TopBanner hideBanner={this.hideBanner} />
+                </div>
 
-                  <div className="card blue-grey darken-1">
-                    <div className="card-content white-text ">
-                      <div className="">
-                        <Board
-                          className=""
-                          squares={this.state.squares}
-                          onClick={(i, j) => this.handleClick(i, j)}
-                        />
-                      </div>
+                <div className="card blue-grey darken-1">
+                  <div className="card-content white-text ">
+                    <div className="">
+                      <Board
+                        className=""
+                        squares={this.state.squares}
+                        onClick={(i, j) => this.handleClick(i, j)}
+                      />
                     </div>
                   </div>
-                  <div className="vertical-align">
-                    <button
-                      className=" btn teal darken-3"
-                      onClick={this.showAnswer}
-                    >
-                      Show Answer
-                    </button>
-                  </div>
+                </div>
+                <div className="vertical-align">
+                  <button
+                    className=" btn teal darken-3"
+                    onClick={this.showAnswer}
+                  >
+                    Show Answer
+                  </button>
                 </div>
               </div>
             </div>
