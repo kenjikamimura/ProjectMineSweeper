@@ -13,7 +13,7 @@ class StartModal extends Component {
   render() {
     return (
       <div id="startModal" className="modal ">
-        <div className="modal-content pink lighten-5">
+        <div className="modal-content light-blue lighten-5">
           <h4>HAPPY BIRTHDAY KIMBERLEY!!!</h4>
           <p>
             I know how much you looove playing Mine Sweeper... so here is a
@@ -36,7 +36,7 @@ class StartModal extends Component {
             </li>
           </ul>
         </div>
-        <div className="modal-footer pink lighten-5">
+        <div className="modal-footer light-blue lighten-5">
           <a
             href="#!"
             className="modal-close waves-effect waves-green btn-flat"

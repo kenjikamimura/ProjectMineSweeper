@@ -14,7 +14,7 @@ class Game extends Component {
     this.state = {
       squares: JSON.parse(JSON.stringify(blankArray)),
       hintNumbersHidden: false,
-      numberOfSaves: 5,
+      numberOfSaves: 50,
       resetState: JSON.parse(JSON.stringify(blankArray)),
       gameComplete: false
     };
@@ -131,14 +131,14 @@ class Game extends Component {
 
     return (
       <div className="game">
-        <div className=" grey lighten-2 center">
+        <div className=" cyan lighten-5 center">
           <div className=" ">
             <div className="row center">
               <div className="col s12 center">
                 <StartModal />
                 <FinishModal gameComplete={this.state.gameComplete} />
 
-                <div className="card blue-grey darken-1  boardCard ">
+                <div className="card  light-blue lighten-5  boardCard ">
                   <div className="card-content white-text ">
                     <div className="">
                       <Board
@@ -152,14 +152,14 @@ class Game extends Component {
                   <div className="vertical-align">
                     <div className="row">
                       <div className="col s4">
-                        <button className=" btn btn-small teal darken-3  s3">
+                        <button className=" btn btn-small cyan darken-1  s3">
                           Saves Left: {this.state.numberOfSaves}
                         </button>
                       </div>
 
                       <div className="col s4">
                         <button
-                          className=" btn btn-small teal darken-3  s3"
+                          className=" btn btn-small cyan darken-1  s3"
                           onClick={this.saveCheckpoint}
                         >
                           Save Checkpoint
@@ -167,7 +167,7 @@ class Game extends Component {
                       </div>
                       <div className="col s4">
                         <button
-                          className=" btn btn-small teal darken-3  s3"
+                          className=" btn btn-small cyan darken-1  s3"
                           onClick={this.reset}
                         >
                           Reset
