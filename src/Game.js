@@ -3,17 +3,20 @@ import Board from "./Board";
 import "./index.css";
 
 import answerArray, { blankArray } from "./constants/answerArray";
-import TopBanner from "./TopBanner";
+import StartModal from "./Modals/StartModal";
+import FinishModal from "./Modals/FinishModal";
+
+import M from "materialize-css";
 
 class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
       squares: JSON.parse(JSON.stringify(blankArray)),
-      bannerHidden: false,
       hintNumbersHidden: false,
       numberOfSaves: 5,
-      resetState: JSON.parse(JSON.stringify(blankArray))
+      resetState: JSON.parse(JSON.stringify(blankArray)),
+      gameComplete: false
     };
   }
 
@@ -25,7 +28,10 @@ class Game extends Component {
         column
       );
       if (this.checkIfWon()) {
-        alert("You won!");
+        let elems = document.getElementById("finishModal");
+        M.Modal.getInstance(elems).open();
+
+        this.toggleNumbers();
       }
       console.log("correctSurroundingSquares", squares[row][column]);
     } else {
@@ -129,9 +135,8 @@ class Game extends Component {
           <div className=" ">
             <div className="row center">
               <div className="col s12 center">
-                {/* <div className={this.state.bannerHidden ? "hide" : ""}>
-                  <TopBanner hideBanner={this.hideBanner} />
-                </div> */}
+                <StartModal />
+                <FinishModal gameComplete={this.state.gameComplete} />
 
                 <div className="card blue-grey darken-1  boardCard ">
                   <div className="card-content white-text ">
@@ -145,33 +150,30 @@ class Game extends Component {
                     </div>
                   </div>
                   <div className="vertical-align">
-                    <button
-                      className=" btn teal darken-3"
-                      onClick={this.showAnswer}
-                    >
-                      Show Answer
-                    </button>
-                    <button
-                      className=" btn teal darken-3"
-                      onClick={this.toggleNumbers}
-                    >
-                      Toggle Numbers
-                    </button>
-                    <button
-                      className=" btn teal darken-3"
-                      onClick={this.saveCheckpoint}
-                    >
-                      Save Checkpoint
-                    </button>
-                    <button
-                      className=" btn teal darken-3"
-                      onClick={this.saveCheckpoint}
-                    >
-                      Number Of Saves Left: {this.state.numberOfSaves}
-                    </button>
-                    <button className=" btn teal darken-3" onClick={this.reset}>
-                      Reset
-                    </button>
+                    <div className="row">
+                      <div className="col s4">
+                        <button className=" btn btn-small teal darken-3  s3">
+                          Saves Left: {this.state.numberOfSaves}
+                        </button>
+                      </div>
+
+                      <div className="col s4">
+                        <button
+                          className=" btn btn-small teal darken-3  s3"
+                          onClick={this.saveCheckpoint}
+                        >
+                          Save Checkpoint
+                        </button>
+                      </div>
+                      <div className="col s4">
+                        <button
+                          className=" btn btn-small teal darken-3  s3"
+                          onClick={this.reset}
+                        >
+                          Reset
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
