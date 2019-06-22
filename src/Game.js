@@ -31,7 +31,8 @@ class Game extends Component {
         let elems = document.getElementById("finishModal");
         M.Modal.getInstance(elems).open();
 
-        this.toggleNumbers();
+        this.hideNumbers();
+        this.saveCheckpoint();
       }
       console.log("correctSurroundingSquares", squares[row][column]);
     } else {
@@ -102,9 +103,9 @@ class Game extends Component {
     });
   };
 
-  toggleNumbers = () => {
+  hideNumbers = () => {
     this.setState({
-      hintNumbersHidden: !this.state.hintNumbersHidden
+      hintNumbersHidden: true
     });
   };
 
@@ -151,26 +152,18 @@ class Game extends Component {
                   </div>
                   <div className="vertical-align">
                     <div className="row">
-                      <div className="col s4">
+                      <div className="col s6">
                         <button className=" btn btn-small cyan darken-1  s3">
                           Saves Left: {this.state.numberOfSaves}
                         </button>
                       </div>
 
-                      <div className="col s4">
+                      <div className="col s6">
                         <button
                           className=" btn btn-small cyan darken-1  s3"
                           onClick={this.saveCheckpoint}
                         >
                           Save Checkpoint
-                        </button>
-                      </div>
-                      <div className="col s4">
-                        <button
-                          className=" btn btn-small cyan darken-1  s3"
-                          onClick={this.reset}
-                        >
-                          Reset
                         </button>
                       </div>
                     </div>

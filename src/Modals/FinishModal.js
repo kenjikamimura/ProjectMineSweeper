@@ -16,13 +16,14 @@ class FinishModal extends Component {
             <li>
               {"\u2022"} If the scanning doesnt work, try zooming out a little
             </li>
+            <li>
+              {"\u2022"} Make sure you <b>dont</b> refresh the page or else you
+              will have to start again!
+            </li>
           </ul>
         </div>
         <div className="modal-footer light-blue lighten-5">
-          <a
-            href="#!"
-            className="modal-close waves-effect waves-green btn-flat"
-          >
+          <a href="#!" className="modal-close waves-effect btn-flat">
             OK!
           </a>
         </div>
