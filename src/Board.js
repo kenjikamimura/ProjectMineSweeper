@@ -1,12 +1,14 @@
 import React from "react";
 import Square from "./Square";
 
-const createBoard = props => {
+export default function Board(props) {
   const matrixSize = props.squares.length;
   let board = [];
+
   for (let row = 0; row < matrixSize; row++) {
     let boardRow = [];
     boardRow.push(<div className="board-row" />);
+
     for (let column = 0; column < matrixSize; column++) {
       boardRow.push(
         <Square
@@ -17,11 +19,8 @@ const createBoard = props => {
         />
       );
     }
+
     board.push(boardRow);
   }
-  return board;
-};
-
-export default function Board(props) {
-  return <div>{createBoard(props)}</div>;
+  return <div>{board}</div>;
 }
