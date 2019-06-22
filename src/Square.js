@@ -7,7 +7,6 @@ class Square extends Component {
     this.props.onClick();
   };
   render() {
-    // console.log("props.isBlack2", this.props.isBlack);
     return (
       <button
         className={

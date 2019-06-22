@@ -34,16 +34,11 @@ class Game extends Component {
         this.hideNumbers();
         this.saveCheckpoint();
       }
-      console.log("correctSurroundingSquares", squares[row][column]);
     } else {
       squares = JSON.parse(JSON.stringify(this.state.resetState));
-      console.log("blankarray:", blankArray);
     }
-    console.log("sqaures", squares);
 
     this.setState({ squares });
-
-    console.log(row, column);
   }
 
   checkIfWon = () => {
@@ -62,10 +57,8 @@ class Game extends Component {
   getValueFromBlockOfInterest = (row, col) => {
     try {
       const blockOfInterest = !!answerArray[row][col];
-      // console.log("blockOfInterest", blockOfInterest);
       return blockOfInterest;
     } catch {
-      console.log("caught ya");
       return false;
     }
   };
@@ -128,8 +121,6 @@ class Game extends Component {
   };
 
   render() {
-    console.log("state", this.state);
-
     return (
       <div className="game">
         <div className=" cyan lighten-5 center">
