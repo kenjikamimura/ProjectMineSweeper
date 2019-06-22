@@ -5,6 +5,7 @@ import "./index.css";
 import answerArray, { blankArray } from "./constants/answerArray";
 import StartModal from "./Modals/StartModal";
 import FinishModal from "./Modals/FinishModal";
+import CheckpointButtons from "./CheckpointButtons";
 
 import M from "materialize-css";
 
@@ -137,22 +138,10 @@ class Game extends Component {
                   onClick={(row, col) => this.handleClick(row, col)}
                 />
               </div>
-              <div className="vertical-align row">
-                <div className="col s6">
-                  <button className=" btn-small cyan darken-1 s3">
-                    Saves Left: {this.state.numberOfSaves}
-                  </button>
-                </div>
-
-                <div className="col s6">
-                  <button
-                    className="btn-small cyan darken-1 s3"
-                    onClick={this.saveCheckpoint}
-                  >
-                    Save Checkpoint
-                  </button>
-                </div>
-              </div>
+              <CheckpointButtons
+                numberOfSaves={this.state.numberOfSaves}
+                saveCheckpoint={this.saveCheckpoint}
+              />
             </div>
           </div>
         </div>
