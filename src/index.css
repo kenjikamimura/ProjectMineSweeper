@@ -16,8 +16,6 @@ code {
   clear: both;
   content: "";
   display: block;
-  /* margin-top: -10px; */
-  /* margin-top: -0.8%; */
   margin-top: -0.65vh;
 }
 
@@ -27,25 +25,16 @@ code {
 
   line-height: 10px;
   margin-right: -1px;
-  /* margin-top: -10px; */
-  /* margin-bottom: 0px; */
   padding: 0;
   text-align: center;
   height: 19px;
   width: 19px;
-  /* height: 19px; */
-  /* width: 3%; */
 }
 
 .whiteSquare {
   background: #fff;
   border: 1px solid #999;
 }
-/* .whiteSquare:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-} */
 .blackSquare {
   background: #000000;
   border: 1px solid #000000;
