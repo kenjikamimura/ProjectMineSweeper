@@ -122,43 +122,35 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="game">
-        <div className=" cyan lighten-5 center">
-          <div className=" ">
-            <div className="row center">
-              <div className="col s12 center">
-                <StartModal />
-                <FinishModal gameComplete={this.state.gameComplete} />
+      <div className="cyan lighten-5">
+        <div className="row center">
+          <div className="col s12">
+            <StartModal />
+            <FinishModal gameComplete={this.state.gameComplete} />
 
-                <div className="card  light-blue lighten-5  boardCard ">
-                  <div className="card-content white-text ">
-                    <div className="">
-                      <Board
-                        className="boardCard"
-                        squares={this.state.squares}
-                        hintNumbersHidden={this.state.hintNumbersHidden}
-                        onClick={(i, j) => this.handleClick(i, j)}
-                      />
-                    </div>
-                  </div>
-                  <div className="vertical-align">
-                    <div className="row">
-                      <div className="col s6">
-                        <button className=" btn btn-small cyan darken-1  s3">
-                          Saves Left: {this.state.numberOfSaves}
-                        </button>
-                      </div>
+            <div className="card light-blue lighten-5 boardCard ">
+              <div className="card-content">
+                <Board
+                  className="boardCard"
+                  squares={this.state.squares}
+                  hintNumbersHidden={this.state.hintNumbersHidden}
+                  onClick={(row, col) => this.handleClick(row, col)}
+                />
+              </div>
+              <div className="vertical-align row">
+                <div className="col s6">
+                  <button className=" btn-small cyan darken-1 s3">
+                    Saves Left: {this.state.numberOfSaves}
+                  </button>
+                </div>
 
-                      <div className="col s6">
-                        <button
-                          className=" btn btn-small cyan darken-1  s3"
-                          onClick={this.saveCheckpoint}
-                        >
-                          Save Checkpoint
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                <div className="col s6">
+                  <button
+                    className="btn-small cyan darken-1 s3"
+                    onClick={this.saveCheckpoint}
+                  >
+                    Save Checkpoint
+                  </button>
                 </div>
               </div>
             </div>
